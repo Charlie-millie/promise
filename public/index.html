@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width,initial-scale=1'>
+        <title>Charlie Promise</title>
+        <script defer src='./build/Charlie-Promise.js'></script>
+    </head>
+    <body>
+        <h1>Charlie Promise Polyfill</h1>
+    </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // new window.CharliePromise("charlie123");
+
+            // console.log("============= ", window.CharliePromise);
+            /*const testPromise = new Promise((resolve, reject) => {
+                resolve("resolve test!");
+            });
+
+            testPromise.then((res) => {
+                console.log("------testPromise resolve: ", res);
+            }, (err) => {
+                console.log("------testPromise reject: ", err);
+            });*/
+
+
+        /*    const testPromise2 = new Promise((resolve, reject) => {
+                setTimeout(() => resolve('sample test 111!'), 1000);
+            });
+
+            testPromise2.then((res) => {
+                console.log("------step1 resolve: ", res);
+                // return `${res} value`;
+                return new Promise((resolve) => {
+                    setTimeout(() => resolve("sample test 222!"), 2000);
+                });
+            }).then((res) => {
+                console.log("------step2 resolve:", res);
+            });*/
+
+
+            const testPromiseAll_1 = Promise.resolve("first work!");
+            const testPromiseAll_2 = "not promise";
+            const testPromiseAll_3 = new Promise((resolve, reject) => {
+               // setTimeout(() => resolve('second work!'), 1000);
+                setTimeout(resolve, 1000, 'second work!');
+            });
+
+            const allPromise = Promise.all([testPromiseAll_1, testPromiseAll_2, testPromiseAll_3]).then((values) => {
+                console.log("######### promise all ############- ", values);
+            })
+
+
+
+        });
+    </script>
+</html>
